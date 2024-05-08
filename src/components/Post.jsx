@@ -1,6 +1,6 @@
 function Post(props){
     return ( 
-    <div style={{color:'pink',textAlign:'left'}}> 
+    <div className='post'> 
         <p> {props.author} </p>
         <p> {props.body}</p>
     </div>
