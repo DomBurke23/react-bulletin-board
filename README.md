@@ -8,3 +8,4 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 ## Commit 1 - 
+![Commit1](https://github.com/DomBurke23/react-crash-course/assets/22835921/b96c079c-d1da-444d-9c32-71cb4841784a)
