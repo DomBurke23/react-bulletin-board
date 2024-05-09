@@ -8,9 +8,8 @@ import NewPost from "./NewPost";
 import classes from "./PostsList.module.css";
 import Modal from "./Modal";
 
-function PostsList() {
+function PostsList({ isVisible, onStopPosting }) {
   // register state
-  const [modalIsVisible, setModalIsVisible] = useState(true);
   const [enteredBody, setEnteredBody] = useState("");
   const [enteredAuthor, setEnteredAuthor] = useState("");
 
@@ -18,10 +17,6 @@ function PostsList() {
   // tells browser that we want to get hold of text area and add an event listener followed by what should happen
   //document.querySelector('textarea').addEventListener('change', function(){});
   // react we use declarative approach eg onKeyDown or onChange
-
-  function hideModalHandler() {
-    setModalIsVisible(false);
-  }
 
   function bodyChangeHandler(event) {
     // prints each letter (keystroke) out eg h he hel ..
@@ -34,9 +29,9 @@ function PostsList() {
   }
 
   let modalContent;
-  if (modalIsVisible) {
+  if (isVisible) {
     modalContent = (
-      <Modal onClose={hideModalHandler}>
+      <Modal onClose={onStopPosting}>
         <NewPost
           onBodyChange={bodyChangeHandler}
           onAuthorChange={authorChangeHandler}
