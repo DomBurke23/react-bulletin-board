@@ -2,10 +2,24 @@ import Post from "./Post";
 import NewPost from "./NewPost";
 import classes from "./PostsList.module.css";
 import Modal from "./Modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function PostsList({ isVisible, onStopPosting }) {
+  /* the following causes an infinite loop
+  fetch("http://localhost:8080/posts").then(
+    (response) => response.json()
+    .then(data => {setPosts(data.posts)}));*/
   const [posts, setPosts] = useState([]);
+
+  //fetch the data of existing posts
+  useEffect(() => {
+    async function fetchPosts() {
+      const response = await fetch("http://localhost:8080/posts");
+      const resData = await response.json();
+      setPosts(resData.posts);
+    }
+    fetchPosts();
+  }, []);
 
   function addPostHandler(postData) {
     fetch("http://localhost:8080/posts", {
