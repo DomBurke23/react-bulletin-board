@@ -23,7 +23,6 @@ function PostsList({ isVisible, onStopPosting }) {
     );
   }
 
-  // TODO replace and dynamically render posts here
   // key should be a unique id, for this example body is fine
   return (
     <>
