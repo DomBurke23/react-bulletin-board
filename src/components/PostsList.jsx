@@ -8,6 +8,13 @@ function PostsList({ isVisible, onStopPosting }) {
   const [posts, setPosts] = useState([]);
 
   function addPostHandler(postData) {
+    fetch("http://localhost:8080/posts", {
+      method: "POST",
+      body: JSON.stringify(postData),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
     // ...posts is there so that we dont override any previous posts
     // this is not optimal
     //setPosts([postData, ...posts]);
