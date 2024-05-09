@@ -1,11 +1,11 @@
 import classes from "./Modal.module.css";
 
 // children is a reserved prop name , we could pass in props and then reference prop.children instead
-function Modal({ children }) {
-  // open defaults as true, open is required due to the dialog
+// open defaults as true, open is required due to the dialog
+function Modal({ children, onClose }) {
   return (
     <>
-      <div className={classes.backdrop} />
+      <div className={classes.backdrop} onClick={onClose} />
       <dialog open className={classes.modal}>
         {children}
       </dialog>
