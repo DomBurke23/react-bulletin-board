@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import App from "./routes/App.jsx";
+import App, { loader as appLoader } from "./routes/App.jsx";
 import NewPost from "./routes/NewPost.jsx";
 import RootLayout from "./routes/RootLayout.jsx";
 import "./index.css";
@@ -15,6 +15,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <App />,
+        loader: appLoader,
         children: [{ path: "/create-post", element: <NewPost /> }],
       },
     ],
