@@ -19,6 +19,9 @@ function PostsList({ isVisible, onStopPosting }) {
       setIsFetching(true);
       const response = await fetch("http://localhost:8080/posts");
       const resData = await response.json();
+      if (!response.ok) {
+        // TODO output error message here
+      }
       setPosts(resData.posts);
       setIsFetching(false);
     }
