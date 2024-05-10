@@ -1,10 +1,8 @@
 import Post from "./Post";
-import NewPost from "./NewPost";
 import classes from "./PostsList.module.css";
-import Modal from "./Modal";
 import { useState, useEffect } from "react";
 
-function PostsList({ isVisible, onStopPosting }) {
+function PostsList() {
   /* the following causes an infinite loop
   fetch("http://localhost:8080/posts").then(
     (response) => response.json()
@@ -42,19 +40,9 @@ function PostsList({ isVisible, onStopPosting }) {
     setPosts((existingPosts) => [postData, ...existingPosts]);
   }
 
-  let modalContent;
-  if (isVisible) {
-    modalContent = (
-      <Modal onClose={onStopPosting}>
-        <NewPost onCancel={onStopPosting} onAddPost={addPostHandler} />
-      </Modal>
-    );
-  }
-
   // key should be a unique id, for this example body is fine
   return (
     <>
-      {modalContent}
       {!isFetching && posts.length > 0 && (
         <ul className={classes.posts}>
           {posts.map((post) => (

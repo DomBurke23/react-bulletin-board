@@ -3,8 +3,9 @@
 // hooks can not be executed in regular javascript functions
 // hooks typically change something about that component or how react behaves with that component.
 import { useState } from "react";
-
+import Modal from "../components/Modal";
 import classes from "./NewPost.module.css";
+import { Link } from "react-router-dom";
 
 /* 
 by default if you add buttons to a form , if they are pressed, they will submit that form , meaning a submit event will be generated and also by default the browser will generate AND send an HTTP request to the server that is serving the website.
@@ -45,28 +46,35 @@ function NewPost(props) {
   }
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-      <p>
-        <label htmlFor="body">Text</label>
-        <textarea
-          id="body"
-          required
-          rows={3}
-          // sets up an event listner
-          onChange={bodyChangeHandler}
-        />
-      </p>
-      <p>
-        <label htmlFor="name">Your name</label>
-        <input type="text" id="name" required onChange={authorChangeHandler} />
-      </p>
-      <p className={classes.actions}>
-        <button type="button" onClick={props.onCancel}>
-          Cancel
-        </button>
-        <button>Submit</button>
-      </p>
-    </form>
+    <Modal>
+      <form className={classes.form} onSubmit={submitHandler}>
+        <p>
+          <label htmlFor="body">Text</label>
+          <textarea
+            id="body"
+            required
+            rows={3}
+            // sets up an event listner
+            onChange={bodyChangeHandler}
+          />
+        </p>
+        <p>
+          <label htmlFor="name">Your name</label>
+          <input
+            type="text"
+            id="name"
+            required
+            onChange={authorChangeHandler}
+          />
+        </p>
+        <p className={classes.actions}>
+          <Link to=".." type="button">
+            Cancel
+          </Link>
+          <button>Submit</button>
+        </p>
+      </form>
+    </Modal>
   );
 }
 
